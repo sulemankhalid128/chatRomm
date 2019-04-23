@@ -12,6 +12,10 @@
   <link rel='stylesheet' href='/stylesheets/style.css' />
 
   <style>
+    body{
+      background-image: url('./images/bgimg.jpg');
+      color: white;
+    }
     #chatArea {
       display: none;
     }
@@ -19,41 +23,38 @@
 </head>
 
 <body>
-  <div class="container">
-
-    <div class="row" id="userArea">
-      <div class="col-md-4">
-
-      </div>
-      <div class="col-md-8">
-        <h3>Your Name</h3>
-        <form action="" id="userForm">
-          <input type="text" class="form-control" id="username" style="margin-top:10px;"
-            placeholder="type your Name ...">
-          <input type="submit" id="userBtn" class="btn btn-success btn-md" style="margin-top:10px;" value="Send">
-        </form>
-      </div>
-
-
-    </div>
-    <div class="row" id="chatArea">
-        <div class="col-md-4">
-            <h2>Active Users</h2>
-            <ul id="userlist">
-            </ul>
-          </div>
-          <div class="col-md-8">
-            <Strong>Your Messages</Strong>
-
-            <div id="allchat" class=""></div>
-
-            <form action="" id="messageForm">
-                <input type="text" class="form-control" id="textmsg"  style="margin-top:10px;"  placeholder="type your message ...">
-                <input type="submit"  id="saveBtn" class="btn btn-success btn-md" style="margin-top:10px;" value="Send">
+  <div class="container" style="padding: 15px">
+      <div class="row" id="userArea">
+        <div class="col-md-2"></div>
+          <div class="col-md-8 col-xs-12">
+            <h3>Your Name</h3>
+            <form action="" id="userForm">
+              <input type="text" class="form-control" id="username" style="margin-top:10px;"
+                placeholder="type your Name ...">
+              <input type="submit" id="userBtn" class="btn btn-success btn-md" style="margin-top:10px;" value="Send">
             </form>
           </div>
+          <div class="col-md-2 col-xs-4"></div>
+        </div>
+  </div>
+  <div class="container">
+    <div class="row" id="chatArea">
+      <div class="col-md-4">
+          <h2>Active Users</h2>
+          <ul id="userlist">
+          </ul>
+      </div>
+      <div class="col-md-8">
+          <Strong>Your Messages</Strong>
+          <div id="allchat" class=""></div>
+          <form action="" id="messageForm">
+              <input type="text" class="form-control" id="textmsg"  style="margin-top:10px;"  placeholder="type your message ...">
+              <input type="submit"  id="saveBtn" class="btn btn-success btn-md" style="margin-top:10px;" value="Send">
+          </form>
+      </div>
     </div>
   </div>
+  
 
 
     <script>
@@ -85,14 +86,14 @@
         $('#username').val('');
       });
       socket.on('user message', function (data) {
-        $('#allchat').append('<div class="form-control" style="margin: 10px 0 10px 0"><strong>'+ data.user +':</strong>' + data.msg+ '</div>')
+        $('#allchat').append('<div class="form-control" style="margin: 10px 0 10px 0;"><strong>' + data.user +':</strong>' + data.msg+ '</div>')
       })
 
       socket.on('username', function (data) {
         console.log(data);
         var html = ' ';
         for(i = 0; i < data.length; i++){
-          html += '<li class="list-group-item">'+ data[i]+'</li>'
+          html += '<li class="list-group-item" style="color:black; margin-left:-40px;">'+ data[i]+'</li>'
         }
         $('#userlist').html(html);
 
