@@ -62,7 +62,7 @@
         e.preventDefault();
         var message = $('#textmsg').val();
         if (message == '') {
-          alert('type your message')
+          alert('must type you message')
           return false;
         }
         socket.emit('send message', message);
